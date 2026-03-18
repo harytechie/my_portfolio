@@ -3,6 +3,7 @@ import { socials } from "../constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Link } from "react-scroll";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 const Navbar = () => {
   const navRef = useRef(null);
@@ -131,19 +132,44 @@ const Navbar = () => {
           </div>
           <div className="font-light">
             <p className="tracking-wider text-white/50">Social Media</p>
-            <div className="flex flex-col flex-wrap md:flex-row gap-x-2">
-              {socials.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  className="text-sm leading-loose tracking-widest uppercase hover:text-white transition-colors duration-300"
-                  target="_blank"
-                >
-                  {"{ "}
-                  {social.name}
-                  {" }"}
-                </a>
-              ))}
+            <div className="flex flex-col flex-wrap md:flex-row gap-x-6">
+              {socials.map((social, index) => {
+                const getIcon = (name) => {
+                  switch (name.toLowerCase()) {
+                    case "instagram":
+                      return "mdi:instagram";
+                    case "linkedin":
+                      return "mdi:linkedin";
+                    case "github":
+                      return "mdi:github";
+                    case "cv":
+                      return "mdi:file-document-outline";
+                    default:
+                      return "mdi:link-variant";
+                  }
+                };
+                return (
+                  <a
+                    key={index}
+                    href={social.href}
+                    className="group flex items-center gap-2 text-sm leading-loose tracking-widest uppercase text-white/50 hover:text-white transition-all duration-300"
+                    target="_blank"
+                  >
+                    <Icon
+                      icon={getIcon(social.name)}
+                      className="size-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12"
+                    />
+                    <span className="relative overflow-hidden">
+                      <span className="inline-block transition-transform duration-300 group-hover:-translate-y-full">
+                        {social.name}
+                      </span>
+                      <span className="absolute top-0 left-0 inline-block translate-y-full transition-transform duration-300 group-hover:translate-y-0">
+                        {social.name}
+                      </span>
+                    </span>
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>

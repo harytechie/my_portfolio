@@ -3,6 +3,7 @@ import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
 import Marquee from "../components/Marquee";
 import { socials } from "../constants";
 import gsap from "gsap";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 const Contact = () => {
   const text = `Got a question, how or project Idea?
@@ -59,20 +60,36 @@ const Contact = () => {
             <div className="social-link">
               <h2>Social Media</h2>
               <div className="w-full h-px my-2 bg-white/30" />
-              <div className="flex flex-wrap gap-2">
-                {socials.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs leading-loose tracking-wides uppercase md:text-sm hover:text-white/80 transition-colors duration-200"
-                  >
-                    {"{ "}
-                    {social.name}
-                    {" }"}
-                  </a>
-                ))}
+              <div className="flex flex-wrap gap-5">
+                {socials.map((social, index) => {
+                  const getIcon = (name) => {
+                    switch (name.toLowerCase()) {
+                      case "instagram": return "mdi:instagram";
+                      case "linkedin": return "mdi:linkedin";
+                      case "github": return "mdi:github";
+                      case "cv": return "mdi:file-document-outline";
+                      default: return "mdi:link-variant";
+                    }
+                  };
+                  return (
+                    <a
+                      key={index}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-center gap-1.5 text-xs leading-loose tracking-widest uppercase md:text-sm text-white/50 hover:text-white transition-all duration-300"
+                    >
+                      <Icon 
+                        icon={getIcon(social.name)} 
+                        className="size-4 md:size-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" 
+                      />
+                      <span className="relative">
+                        {social.name}
+                        <span className="absolute -bottom-0.5 left-0 h-[1px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
+                      </span>
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </div>
