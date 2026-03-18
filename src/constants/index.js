@@ -162,5 +162,5 @@ export const socials = [
   { name: "Instagram", href: "https://www.instagram.com/itz_harry_.93?igsh=YzR4aGoxc3RlNHAy" },
   { name: "LinkedIn", href: "https://www.linkedin.com/in/hari-haran-749aa92b4" },
   { name: "GitHub", href: "https://github.com/harytechie" },
-  { name: "CV", href: "#" },
+  { name: "CV", href: "/assets/doument/Hariharan_Resume_final.pdf" },
 ];

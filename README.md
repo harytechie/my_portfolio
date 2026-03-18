@@ -43,29 +43,34 @@ Modern Navigation: Custom-built overlay Navbar with scroll-triggered visibility.
 
 **🚀 Getting Started**
 
-    Clone the repository:
+Clone the repository:
 
-    Bash
-    git clone https://github.com/MohamedxFawzi/Portfolio.git
-    Install dependencies:
+```bash
+git clone https://github.com/harytechie/my_portfolio.git
+```
 
-    Bash
-    npm install
-    Run the development server:
+Install dependencies:
 
-    Bash
-    npm run dev
-    Build for production:
+```bash
+npm install
+```
 
-    Bash
-    npm run build
+Run the development server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
     
-📨 Contact Me
+**📨 Contact Me**
 
-Email: mohamedfawzeix@gmail.com
+LinkedIn: [Hari Haran](https://www.linkedin.com/in/hari-haran-749aa92b4)
 
-LinkedIn: Mohamed Fawzi
-
-GitHub: @MohamedxFawzi
+GitHub: [@harytechie](https://github.com/harytechie)
 
 ⭐️ If you find this project helpful, don't forget to give it a star!

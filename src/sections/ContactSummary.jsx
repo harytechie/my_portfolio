@@ -18,6 +18,11 @@ const ContactSummary = () => {
     "contact us",
     "contact us",
     "contact us",
+    "contact us",
+    "contact us",
+    "contact us",
+    "contact us",
+    "contact us",
   ];
 
   useGSAP(() => {
