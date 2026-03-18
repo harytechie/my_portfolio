@@ -1,65 +1,81 @@
 export const servicesData = [
   {
-    title: "Modern Web Architecture",
+    title: "Modern Web Development",
     description:
-      "Building scalable, production-ready web applications using React.js, Next.js, and TypeScript. I specialize in bilingual (RTL/LTR) platforms optimized for maximum performance and 95+ Lighthouse scores.",
+      "Building scalable, production-ready web applications using modern technologies like React.js, Django, and JavaScript. I focus on creating responsive, user-friendly applications optimized for real-world performance.",
     items: [
       {
-        title: "Next.js App Router & Server Actions",
+        title: "Full-Stack Development (React + Django)",
       },
       {
-        title: "TypeScript for Type-Safe Development",
+        title: "REST API Integration & Backend Logic",
       },
       {
-        title: "Bilingual (Arabic/English) Support",
+        title: "Responsive & Cross-Platform Design",
       },
     ],
   },
   {
     title: "Performance Optimization",
     description:
-      "Optimizing web applications to achieve 95+ Lighthouse scores. Implementing advanced techniques like lazy loading, asset optimization, and efficient rendering strategies for lightning-fast load times.",
+      "Optimizing applications for speed, efficiency, and smooth user experience. Implementing best practices to ensure fast load times and reliable performance.",
     items: [
       {
-        title: "High Lighthouse Performance Scores",
+        title: "Fast Loading & Optimized Rendering",
       },
       {
-        title: "Image & Asset Optimization",
+        title: "Efficient API Handling",
       },
       {
-        title: "Code Splitting & Caching",
+        title: "Code Optimization & Clean Architecture",
       },
     ],
   },
   {
-    title: "Interactive UI & Animations",
+    title: "UI/UX & Interactive Design",
     description:
-      "Crafting immersive user experiences using GSAP and modern CSS. Creating smooth transitions and high-performance animations that engage users without compromising site speed.",
+      "Designing clean and engaging user interfaces with modern styling and smooth interactions. Focused on usability and simplicity.",
     items: [
       {
-        title: "GSAP (GreenSock) Animations",
+        title: "Modern UI Design (CSS / Tailwind)",
       },
       {
-        title: "Advanced Tailwind CSS Styling",
+        title: "Responsive Layouts",
       },
       {
-        title: "Framer Motion & Scroll Effects",
+        title: "Smooth User Experience",
+      },
+    ],
+  },
+  {
+    title: "AI & Smart Systems",
+    description:
+      "Building intelligent systems and integrating AI features into applications like chatbots, recommendation systems, and automation tools.",
+    items: [
+      {
+        title: "AI Chatbot Development",
+      },
+      {
+        title: "Machine Learning Integration",
+      },
+      {
+        title: "Real-Time Data Processing",
       },
     ],
   },
   {
     title: "State Management & APIs",
     description:
-      "Expertly connecting front-end interfaces with RESTful APIs. Managing complex application states and implementing optimistic UI updates for a seamless, real-time user experience.",
+      "Connecting frontend with backend systems efficiently and managing application state for smooth performance.",
     items: [
       {
-        title: "React Query for Data Fetching",
+        title: "API Integration (REST APIs)",
       },
       {
-        title: "Redux Toolkit State Management",
+        title: "State Handling & Data Flow",
       },
       {
-        title: "Optimistic UI & Real-time Updates",
+        title: "Dynamic & Real-Time Updates",
       },
     ],
   },
@@ -67,103 +83,84 @@ export const servicesData = [
 export const projects = [
   {
     id: 1,
-    name: "Baga Store (Shopify E-Commerce)",
+    name: "AI Healthcare Chatbot",
     description:
-      "A fully customized, high-converting Shopify e-commerce platform specializing in premium phone accessories. Engineered a seamless user interface, optimized loading speeds, and ensured a pixel-perfect responsive design to enhance the shopping experience.",
-    href: "https://www.bagaegstore.com/",
-    image: "/assets/projects/Baga .png",
-    bgImage: "/public/assets/backgrounds/baga-bg.png",
+      "An intelligent healthcare chatbot powered by NLP and Machine Learning. Designed to assist users with medical queries, symptom analysis, and health guidance — delivering accurate, context-aware responses through a Flask-based backend.",
+    href: "https://modern-ai-healthcare-chatbot-bquw.vercel.app/",
+    image: "/assets/projects/chatbot.png",
+    bgImage: "/assets/backgrounds/ai-healthcare-bg.png",
     frameworks: [
-      { id: 1, name: "Shopify" },
-      { id: 2, name: "Liquid" },
-      { id: 3, name: "JavaScript" },
-      { id: 4, name: "Tailwind CSS" },
-      { id: 5, name: "HTML5" },
+      { id: 1, name: "Python" },
+      { id: 2, name: "NLP" },
+      { id: 3, name: "Flask" },
+      { id: 4, name: "Machine Learning" },
     ],
   },
   {
     id: 2,
-    name: "Omnibuy (E-Commerce Platform)",
+    name: "Vehicle Monitoring System (YOLO CV)",
     description:
-      "A comprehensive e-commerce web application with a focus on seamless user experience. Developed a dynamic, state-driven Mega-Menu for intuitive navigation, optimized client-side routing to eliminate page reloads, and designed a clean, modern UI for complex product categories.",
-    href: "https://e-commerce-woad-eta-93.vercel.app/en",
-    image: "/assets/projects/omnibuy.png",
-    bgImage: "/assets/backgrounds/omnibuy-bg.png",
+      "A real-time vehicle monitoring and detection system built using YOLO and OpenCV. Capable of identifying, tracking, and analyzing vehicles in live video streams with high accuracy and low latency.",
+    href: "#",
+    image: "/assets/projects/vehicle_detection.png",
+    bgImage: "/assets/backgrounds/vehicle-monitoring-bg.png",
     frameworks: [
-      { id: 1, name: "Next.js" },
-      { id: 2, name: "React.js" },
-      { id: 3, name: "Tailwind CSS" },
-      { id: 4, name: "JavaScript" },
+      { id: 1, name: "Python" },
+      { id: 2, name: "YOLO" },
+      { id: 3, name: "OpenCV" },
+      { id: 4, name: "Computer Vision" },
     ],
   },
   {
     id: 3,
-    name: "Social Network App",
+    name: "Face Recognition System",
     description:
-      "A fully responsive social media application featuring a modern UI inspired by leading platforms. Engineered a robust front-end architecture to consume RESTful APIs for user authentication, dynamic post feeds, and interactive comment sections, delivering a seamless and engaging user experience.",
-    href: "https://social-media-app-eight-liard.vercel.app/register",
-    image: "/assets/projects/social.png",
-    bgImage: "/assets/backgrounds/social-bg.png",
+      "An AI-powered face recognition system that detects and identifies individuals in real time using OpenCV and advanced face recognition algorithms. Built for security and authentication use cases.",
+    href: "#",
+    image: "/assets/projects/face_detection.png",
+    bgImage: "/assets/backgrounds/face-recognition-bg.png",
     frameworks: [
-      { id: 1, name: "React.js" },
-      { id: 2, name: "Tailwind CSS" },
-      { id: 3, name: "RESTful APIs" },
-      { id: 4, name: "JavaScript" },
+      { id: 1, name: "Python" },
+      { id: 2, name: "OpenCV" },
+      { id: 3, name: "Face Recognition" },
+      { id: 4, name: "AI" },
     ],
   },
-  {
-    id: 4,
-    name: "Campus Control (Management System)",
-    description:
-      "A comprehensive educational management CRUD application. Developed features to manage students, courses, and payment records with role-based access control (Teacher vs. Student). Ensured secure data persistence using local storage and enhanced user interactions with SweetAlert2.",
-    href: "https://crud-system-six-wine.vercel.app/",
-    image: "/assets/projects/campus.png",
-    bgImage: "/assets/backgrounds/campus-bg.png",
-    frameworks: [
-      { id: 1, name: "JavaScript" },
-      { id: 2, name: "Bootstrap 5" },
-      { id: 3, name: "HTML5 / CSS3" },
-      { id: 4, name: "SweetAlert2" },
-    ],
-  },
+
   {
     id: 5,
-    name: "Games Reviews",
+    name: "E-Commerce Web Application",
     description:
-      "A dynamic web application for game discovery and reviews. Built with JavaScript using Object-Oriented Programming (OOP) principles and integrated with third-party APIs to fetch and display real-time game data, ratings, and details through an interactive and fully responsive UI.",
-    href: "https://games-reviews-eight.vercel.app/",
-    image: "/assets/projects/games.png",
-    bgImage: "/assets/projects/games.png",
-    frameworks: [
-      { id: 1, name: "JavaScript (OOP)" },
-      { id: 2, name: "REST APIs" },
-      { id: 3, name: "HTML5" },
-      { id: 4, name: "CSS3" },
-    ],
-  },
- {
-    id: 6,
-    name: "Gaming Hub (High Performance Landing Page)",
-    description:
-      "A modern, high-performance landing page dedicated to the gaming community. This project achieved outstanding Google Lighthouse scores (98% Performance, 100% Best Practices) by optimizing asset delivery, minimizing unused JavaScript, and adhering to modern web performance standards.",
-    href: "https://gaming-website-plum-kappa.vercel.app/",
-    image: "/assets/projects/gaming.png", 
-    bgImage: "/assets/projects/gaming.png",
+      "A full-featured, responsive e-commerce web application built with React.js and Next.js. Includes product listings, cart management, REST API integration, and a sleek, modern UI styled with Tailwind CSS.",
+    href: "#",
+    image: "/assets/projects/electronics-store.jpg",
+    bgImage: "/assets/backgrounds/ecommerce-bg.png",
     frameworks: [
       { id: 1, name: "React.js" },
-      { id: 2, name: "Tailwind CSS" },
-      { id: 3, name: "Vite" },
-      { id: 4, name: "Lighthouse Optimization" },
+      { id: 2, name: "Next.js" },
+      { id: 3, name: "Tailwind CSS" },
+      { id: 4, name: "REST APIs" },
+    ],
+  },
+  {
+    id: 6,
+    name: "Hit the Dot Game",
+    description:
+      "A fun and interactive browser-based game where players test their reflexes by hitting moving dots. Built with pure HTML5, CSS3, and JavaScript, featuring smooth animations and an engaging interactive UI.",
+    href: "#",
+    image: "/assets/projects/hit_the_dot.png",
+    bgImage: "/assets/backgrounds/hit-the-dot-bg.png",
+    frameworks: [
+      { id: 1, name: "HTML5" },
+      { id: 2, name: "CSS3" },
+      { id: 3, name: "JavaScript" },
+      { id: 4, name: "Interactive UI" },
     ],
   },
 ];
 export const socials = [
-  { name: "Instagram", href: "https://www.instagram.com/mohamedfawzix/" },
-  { name: "LinkedIn", href: "https://www.linkedin.com/in/mohamed--fawzi" },
-
-  { name: "GitHub", href: "https://github.com/MohamedxFawzi" },
-  {
-    name: "CV",
-    href: "https://drive.google.com/file/d/18eZI-y0WaREOYVGwBOuGfaiz0QTqUgoO/view?usp=sharing",
-  },
+  { name: "Instagram", href: "https://www.instagram.com/itz_harry_.93?igsh=YzR4aGoxc3RlNHAy" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/hari-haran-749aa92b4" },
+  { name: "GitHub", href: "https://github.com/harytechie" },
+  { name: "CV", href: "#" },
 ];

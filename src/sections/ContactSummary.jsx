@@ -41,17 +41,17 @@ const ContactSummary = () => {
       <Marquee items={items} />
       <div className="overflow-hidden font-light text-center contact-text-responsive">
         <p>
-          “ Let’s build a <br />
-          <span className="font-normal">memorable</span> &{" "}
-          <span className="italic">inspiring</span> <br />
-          web application <span className="text-gold">together</span> “
+          “ Let’s build intelligent <br />
+          <span className="font-normal">solutions</span> &{" "}
+          <span className="italic">engaging</span> <br />
+          experiences <span className="text-gold">together</span> “
         </p>
       </div>
       <Marquee
         items={items2}
         reverse={true}
-        className="text-black bg-transparent border-y-2"
-        iconClassName="stroke-gold stroke-2 text-primary"
+        className="text-black bg-white border-y-2 border-black/20"
+        iconClassName="hidden"
         icon="material-symbols-light:square"
       />
     </section>

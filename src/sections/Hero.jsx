@@ -3,7 +3,7 @@ import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
 
 const Hero = () => {
   const isMobile = useMediaQuery({ maxWidth: 853 });
-  const text = `Transforming complex ideas into lightning-fast, immersive digital experiences using Next.js, TypeScript, and GSAP.`;
+  const text = `Transforming ideas into scalable, high-performance digital solutions using modern web technologies and AI-driven systems.`;
 
   return (
     <section
@@ -13,7 +13,7 @@ const Hero = () => {
       <div className="w-full mt-4 flex flex-col items-center z-30">
         <AnimatedHeaderSection
           subTitle={"Where logic meets imagination, creation starts."}
-          title={"Mohamed Fawzi"}
+          title={"Hari Haran"}
           text={text}
           textColor={"text-black"}
         />

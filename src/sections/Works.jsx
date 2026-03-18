@@ -156,12 +156,12 @@ const Works = () => {
               <img
                 src={project.bgImage}
                 alt={`${project.name}-bg-image`}
-                className="object-cover w-full h-full rounded-md brightness-50"
+                className="object-cover w-full h-full rounded-2xl brightness-50"
               />
               <img
                 src={project.image}
                 alt={`${project.name}-image`}
-                className="absolute bg-center px-14 rounded-xl"
+                className="absolute w-full h-full object-contain p-10 rounded-2xl"
               />
             </div>
           </a>
@@ -169,13 +169,13 @@ const Works = () => {
         {/* desktop Flaoting preview image */}
         <div
           ref={previewRef}
-          className="fixed -top-2/6 left-0 z-50 overflow-hidden border-8 border-black pointer-events-none w-[960px] md:block hidden opacity-0"
+          className="fixed -top-2/6 left-0 z-50 overflow-hidden border-8 border-black rounded-2xl pointer-events-none w-[960px] md:block hidden opacity-0"
         >
           {currentIndex !== null && (
             <img
               src={projects[currentIndex].image}
               alt="preview"
-              className="object-cover w-full h-full"
+              className="object-contain w-full h-full"
             />
           )}
         </div>

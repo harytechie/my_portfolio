@@ -128,8 +128,8 @@ const SpiderManMask = () => {
     }
   }, [showMask, isMobile, idleMaskPosition]);
 
-  const finalMaskScale = isMobile ? 0.05 : 0.062;
-  const finalMaskPosition = isMobile ? [0, 0.4, 0] : [0, 0, 0];
+  const finalMaskScale = isMobile ? 0.0475 : 0.059;
+  const finalMaskPosition = isMobile ? [0, 0.1, 0] : [0, -0.3, 0];
 
   return (
     <section className="relative w-full min-h-screen overflow-hidden pt-20 flex flex-col items-center bg-[#020617]">
@@ -189,13 +189,13 @@ const SpiderManMask = () => {
         onTouchEnd={handleMouseLeave}
       >
         <img
-          src="/images/hero.png"
-          alt="Mohamed Fawzi"
+          src="/images/hari_hero.png"
+          alt="Hari Haran"
           className="absolute inset-0 w-full h-full object-cover z-10 transition-transform duration-300 ease-out !cursor-pointer"
           style={{
-            objectPosition: "top center",
-            transformOrigin: "top center",
-            transform: `translate3d(${mousePos.x}px, ${mousePos.y}px, 0) scale(${isMobile ? 1.2 : 1.21})`,
+            objectPosition: "60% top",
+            transformOrigin: "center bottom",
+            transform: `translate3d(${mousePos.x}px, ${mousePos.y}px, 0) scale(${isMobile ? 0.88 : 0.9})`,
           }}
         />
 
@@ -230,7 +230,7 @@ const SpiderManMask = () => {
             maskImage: verticalScannerMask,
             WebkitMaskRepeat: "no-repeat",
             maskRepeat: "no-repeat",
-      
+
             WebkitMaskPosition: idleMaskPosition,
             maskPosition: idleMaskPosition,
             opacity: 0,

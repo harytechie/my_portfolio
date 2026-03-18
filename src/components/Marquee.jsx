@@ -118,29 +118,33 @@ const Marquee = ({
   }
 
   useEffect(() => {
-    const tl = horizontalLoop(itemsRef.current, {
+    const elements = itemsRef.current.filter(Boolean);
+    if (!elements.length) return;
+
+    const tl = horizontalLoop(elements, {
       repeat: -1,
       paddingRight: 30,
       reversed: reverse,
     });
 
-    Observer.create({
+    const obs = Observer.create({
+      type: "wheel,touch",
       onChangeY(self) {
         let factor = 2.5;
         if ((!reverse && self.deltaY < 0) || (reverse && self.deltaY > 0)) {
           factor *= -1;
         }
         gsap
-          .timeline({
-            defaults: {
-              ease: "none",
-            },
-          })
+          .timeline({ defaults: { ease: "none" } })
           .to(tl, { timeScale: factor * 2.5, duration: 0.2, overwrite: true })
           .to(tl, { timeScale: factor / 2.5, duration: 1 }, "+=0.3");
       },
     });
-    return () => tl.kill();
+
+    return () => {
+      tl.kill();
+      obs.kill();
+    };
   }, [items, reverse]);
   return (
     <div
