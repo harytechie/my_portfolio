@@ -51,13 +51,16 @@ const App = () => {
     imgProgress * 0.5 + threeProgress * 0.5
   );
 
-  // Show UI only when BOTH images AND 3D model are fully loaded
+  // Show UI only when combined progress is 100%
+  // We use extra buffer to ensure Three.js has compiled all shaders
   useEffect(() => {
-    if (imagesLoaded && threeProgress === 100) {
-      const timer = setTimeout(() => setIsReady(true), 400);
+    if (combinedProgress >= 100) {
+      const timer = setTimeout(() => {
+        setIsReady(true);
+      }, 1000); // 1-second buffer for rendering stability
       return () => clearTimeout(timer);
     }
-  }, [imagesLoaded, threeProgress]);
+  }, [combinedProgress]);
 
   return (
     <ReactLenis
