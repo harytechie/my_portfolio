@@ -3,7 +3,7 @@ import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
 import { AnimatedTextLines } from "../components/AnimatedTextLines";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import profileImg from "../../public/images/hari_me.jpeg"
+const profileImg = "/images/hari_me.jpeg"
 const About = () => {
   const text = `Passionate about clean architecture
     I build scalable, high-performance solutions

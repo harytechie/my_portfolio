@@ -5,8 +5,8 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { BackgroundBeams } from "./../components/BackgroundBeams";
 
-import bgTextureLines from "../../public/images/movieposter.avif";
-import spider from "../../public/images/spider.jpg";
+const bgTextureLines = "/images/movieposter.avif";
+const spider = "/images/spider.jpg";
 import SpiderManSymbiote from "../components/Spider-man-symbiote.jsx";
 
 const verticalScannerMask = `linear-gradient(to right, transparent, black 15%, black 85%, transparent)`;
@@ -216,7 +216,7 @@ const SpiderManMask = () => {
                 position={finalMaskPosition}
                 mousePos={mousePos}
               />
-              <Environment preset="city" />
+              <Environment preset="city" resolution={256} />
             </Suspense>
           </Canvas>
         </div>
