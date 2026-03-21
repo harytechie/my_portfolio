@@ -204,26 +204,38 @@ const SpiderManMask = () => {
           >
             <Suspense fallback={null}>
               <ambientLight intensity={isHovered ? 2 : 0.5} />
-              {isHovered && (
-                <>
-                  <directionalLight position={[0, 5, 5]} intensity={4} color="#ffffff" />
-                  <spotLight position={[5, 5, -5]} intensity={5} color="#ff4444" />
-                </>
-              )}
+              <directionalLight
+                position={[0, 5, 5]}
+                intensity={isHovered ? 4 : 0}
+                color="#ffffff"
+              />
+              <spotLight
+                position={[5, 5, -5]}
+                intensity={isHovered ? 5 : 0}
+                color="#ff4444"
+              />
               <SpiderManSymbiote
                 wireframeMode={!isHovered}
                 scale={finalMaskScale}
                 position={finalMaskPosition}
                 mousePos={mousePos}
               />
-              {isHovered && (
-                <Environment resolution={256} preset="city">
-                  <group rotation={[-Math.PI / 3, 4, 1]}>
-                    <Lightformer form={"circle"} intensity={4} position={[0, 5, -9]} scale={10} />
-                    <Lightformer form={"circle"} intensity={4} position={[0, 3, 1]} scale={10} />
-                  </group>
-                </Environment>
-              )}
+              <Environment resolution={256} preset="city">
+                <group rotation={[-Math.PI / 3, 4, 1]}>
+                  <Lightformer
+                    form={"circle"}
+                    intensity={isHovered ? 4 : 0}
+                    position={[0, 5, -9]}
+                    scale={10}
+                  />
+                  <Lightformer
+                    form={"circle"}
+                    intensity={isHovered ? 4 : 0}
+                    position={[0, 3, 1]}
+                    scale={10}
+                  />
+                </group>
+              </Environment>
             </Suspense>
           </Canvas>
         </div>
