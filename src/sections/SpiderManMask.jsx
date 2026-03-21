@@ -1,7 +1,7 @@
 import { Environment, Lightformer } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import gsap from "gsap";
-import { Suspense, useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState, useCallback } from "react";
 import { useMediaQuery } from "react-responsive";
 import { BackgroundBeams } from "./../components/BackgroundBeams";
 
@@ -13,19 +13,16 @@ const verticalScannerMask = `linear-gradient(to right, transparent, black 15%, b
 
 const SpiderManMask = () => {
   const isMobile = useMediaQuery({ maxWidth: 853 });
-
   const [isHovered, setIsHovered] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   const containerRef = useRef(null);
   const hoverCanvasRef = useRef(null);
   const tl = useRef(null);
-
   const isHoveredRef = useRef(false);
+
   const showMask = isHovered;
-  const idleMaskPosition = isMobile
-    ? "calc(50% + 100px) center"
-    : "calc(50% + 170px) center";
+  const idleMaskPosition = isMobile ? "calc(50% + 100px) center" : "calc(50% + 170px) center";
 
   useEffect(() => {
     isHoveredRef.current = showMask;
@@ -33,10 +30,8 @@ const SpiderManMask = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-
     const proxy = { size: 0, opacity: 0 };
     const solid = hoverCanvasRef.current;
-
     tl.current = gsap.timeline({ repeat: -1, repeatDelay: 5, paused: true });
 
     if (solid) {
@@ -50,9 +45,8 @@ const SpiderManMask = () => {
           onUpdate: () => {
             if (solid && !isHoveredRef.current) {
               solid.style.opacity = proxy.opacity;
-              const size = `${proxy.size}px 100%`;
-              solid.style.WebkitMaskSize = size;
-              solid.style.maskSize = size;
+              solid.style.WebkitMaskSize = `${proxy.size}px 100%`;
+              solid.style.maskSize = `${proxy.size}px 100%`;
             }
           },
         })
@@ -65,27 +59,23 @@ const SpiderManMask = () => {
           onUpdate: () => {
             if (solid && !isHoveredRef.current) {
               solid.style.opacity = proxy.opacity;
-              const size = `${proxy.size}px 100%`;
-              solid.style.WebkitMaskSize = size;
-              solid.style.maskSize = size;
+              solid.style.WebkitMaskSize = `${proxy.size}px 100%`;
+              solid.style.maskSize = `${proxy.size}px 100%`;
             }
           },
         });
     }
-
     tl.current.play();
-
     return () => {
       if (tl.current) tl.current.kill();
     };
   }, []);
 
-  const handleMove = (clientX, clientY) => {
+  const handleMove = useCallback((clientX, clientY) => {
     if (containerRef.current && hoverCanvasRef.current) {
       const rect = containerRef.current.getBoundingClientRect();
       const x = clientX - rect.left;
       const y = clientY - rect.top;
-
       const moveFactor = isMobile ? 3 : 10;
       const moveX = (x / rect.width - 0.5) * moveFactor;
       const moveY = (y / rect.height - 0.5) * moveFactor;
@@ -93,16 +83,15 @@ const SpiderManMask = () => {
 
       const maskWidth = isMobile ? 200 : 350;
       const positionStr = `${x - maskWidth / 2}px center`;
-
       hoverCanvasRef.current.style.WebkitMaskPosition = positionStr;
       hoverCanvasRef.current.style.maskPosition = positionStr;
     }
-  };
+  }, [isMobile]);
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
     setIsHovered(false);
     setMousePos({ x: 0, y: 0 });
-  };
+  }, []);
 
   useEffect(() => {
     const solid = hoverCanvasRef.current;
@@ -115,14 +104,12 @@ const SpiderManMask = () => {
         solid.style.opacity = 1;
       } else {
         solid.style.opacity = 0;
-
         setTimeout(() => {
           if (!isHoveredRef.current && solid) {
             solid.style.WebkitMaskPosition = idleMaskPosition;
             solid.style.maskPosition = idleMaskPosition;
           }
         }, 300);
-
         if (tl.current) tl.current.restart(true).delay(1);
       }
     }
@@ -135,18 +122,17 @@ const SpiderManMask = () => {
     <section className="relative w-full min-h-screen overflow-hidden pt-20 flex flex-col items-center bg-[#020617]">
       <style>
         {`
-           @keyframes scanWipe {
+          @keyframes scanWipe {
             0% { clip-path: inset(0 0 100% 0); opacity: 0; }
             15% { opacity: 0.4; } 
             40% { clip-path: inset(0 0 0 0); opacity: 0.4; }
             60% { clip-path: inset(0 0 0 0); opacity: 0.4; }
             85% { opacity: 0.4; } 
             100% { clip-path: inset(100% 0 0 0); opacity: 0; }
-             }
+          }
           .animate-scanner {
             animation: scanWipe 5s ease-in-out infinite;
           }
-
           @keyframes techPulse {
             0% { opacity: 0.2; transform: scale(1); }
             50% { opacity: 0.4; transform: scale(1.02); }
@@ -156,17 +142,13 @@ const SpiderManMask = () => {
       </style>
 
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div
-          className="absolute inset-0 bg-center "
-          style={{
-            backgroundImage: `url(${spider})`,
-            animation: "techPulse 10s ease-in-out infinite",
-          }}
-        />
-        <div
-          className="absolute inset-0 opacity-15 bg-center"
-          style={{ backgroundImage: `url(${bgTextureLines})` }}
-        />
+        <div className="absolute inset-0 bg-center" style={{
+          backgroundImage: `url(${spider})`,
+          animation: "techPulse 10s ease-in-out infinite",
+        }} />
+        <div className="absolute inset-0 opacity-15 bg-center" style={{
+          backgroundImage: `url(${bgTextureLines})`
+        }} />
       </div>
 
       <div className="absolute inset-0 z-0 pointer-events-none opacity-80">
@@ -179,13 +161,8 @@ const SpiderManMask = () => {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={handleMouseLeave}
         onMouseMove={(e) => handleMove(e.clientX, e.clientY)}
-        onTouchStart={(e) => {
-          setIsHovered(true);
-          handleMove(e.touches[0].clientX, e.touches[0].clientY);
-        }}
-        onTouchMove={(e) =>
-          handleMove(e.touches[0].clientX, e.touches[0].clientY)
-        }
+        onTouchStart={(e) => { setIsHovered(true); handleMove(e.touches[0].clientX, e.touches[0].clientY); }}
+        onTouchMove={(e) => handleMove(e.touches[0].clientX, e.touches[0].clientY)}
         onTouchEnd={handleMouseLeave}
       >
         <img
@@ -196,30 +173,9 @@ const SpiderManMask = () => {
             objectPosition: "60% top",
             transformOrigin: "center bottom",
             transform: `translate3d(${mousePos.x}px, ${mousePos.y}px, 0) scale(${isMobile ? 0.88 : 0.9})`,
+            willChange: "transform",
           }}
         />
-
-        <div
-          className={`absolute inset-0 z-15 pointer-events-none transition-opacity duration-300 animate-scanner !cursor-pointer ${isHovered ? "opacity-0" : "opacity-100"}`}
-          style={{
-            transform: `translate3d(${mousePos.x}px, ${mousePos.y}px, 0)`,
-          }}
-        >
-          <Canvas
-            camera={{ position: [0, 0, -12], fov: 22, near: 0.1, far: 50 }}
-          >
-            <Suspense fallback={null}>
-              <ambientLight intensity={1} />
-              <SpiderManSymbiote
-                wireframeMode={true}
-                scale={finalMaskScale}
-                position={finalMaskPosition}
-                mousePos={mousePos}
-              />
-              <Environment preset="city" resolution={256} />
-            </Suspense>
-          </Canvas>
-        </div>
 
         <div
           ref={hoverCanvasRef}
@@ -230,15 +186,16 @@ const SpiderManMask = () => {
             maskImage: verticalScannerMask,
             WebkitMaskRepeat: "no-repeat",
             maskRepeat: "no-repeat",
-
             WebkitMaskPosition: idleMaskPosition,
             maskPosition: idleMaskPosition,
             opacity: 0,
+            willChange: "opacity",
           }}
         >
           <Canvas
             shadows
             transparent
+            dpr={isMobile ? 1 : Math.min(window.devicePixelRatio, 2)}
             camera={{ position: [0, 0, -12], fov: 22, near: 0.1, far: 50 }}
             style={{
               pointerEvents: isHovered ? "auto" : "none",
@@ -246,36 +203,27 @@ const SpiderManMask = () => {
             }}
           >
             <Suspense fallback={null}>
-              <ambientLight intensity={2} />
-              <directionalLight
-                position={[0, 5, 5]}
-                intensity={4}
-                color="#ffffff"
-              />
-              <spotLight position={[5, 5, -5]} intensity={5} color="#ff4444" />
-
+              <ambientLight intensity={isHovered ? 2 : 0.5} />
+              {isHovered && (
+                <>
+                  <directionalLight position={[0, 5, 5]} intensity={4} color="#ffffff" />
+                  <spotLight position={[5, 5, -5]} intensity={5} color="#ff4444" />
+                </>
+              )}
               <SpiderManSymbiote
-                wireframeMode={false}
+                wireframeMode={!isHovered}
                 scale={finalMaskScale}
                 position={finalMaskPosition}
                 mousePos={mousePos}
               />
-              <Environment resolution={256} preset="city">
-                <group rotation={[-Math.PI / 3, 4, 1]}>
-                  <Lightformer
-                    form={"circle"}
-                    intensity={4}
-                    position={[0, 5, -9]}
-                    scale={10}
-                  />
-                  <Lightformer
-                    form={"circle"}
-                    intensity={4}
-                    position={[0, 3, 1]}
-                    scale={10}
-                  />
-                </group>
-              </Environment>
+              {isHovered && (
+                <Environment resolution={256} preset="city">
+                  <group rotation={[-Math.PI / 3, 4, 1]}>
+                    <Lightformer form={"circle"} intensity={4} position={[0, 5, -9]} scale={10} />
+                    <Lightformer form={"circle"} intensity={4} position={[0, 3, 1]} scale={10} />
+                  </group>
+                </Environment>
+              )}
             </Suspense>
           </Canvas>
         </div>

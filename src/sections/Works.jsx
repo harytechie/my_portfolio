@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
 import { projects } from "../constants";
-import { useRef, useState } from "react";
+import { useRef, useState, useCallback } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -41,7 +41,7 @@ const Works = () => {
     });
   }, []);
 
-  const handleMouseEnter = (index) => {
+  const handleMouseEnter = useCallback((index) => {
     if (window.innerWidth < 768) return;
     setCurrentIndex(index);
 
@@ -67,9 +67,9 @@ const Works = () => {
       duration: 0.3,
       ease: "power2.out",
     });
-  };
+  }, []);
 
-  const handleMouseLeave = (index) => {
+  const handleMouseLeave = useCallback((index) => {
     if (window.innerWidth < 768) return;
     setCurrentIndex(null);
 
@@ -89,15 +89,21 @@ const Works = () => {
       duration: 0.3,
       ease: "power2.out",
     });
-  };
+  }, []);
 
-  const handleMouseMove = (e) => {
+  const lastMoveTime = useRef(0);
+
+  const handleMouseMove = useCallback((e) => {
     if (window.innerWidth < 768) return;
+    const now = Date.now();
+    if (now - lastMoveTime.current < 16) return;
+    lastMoveTime.current = now;
+
     mouse.current.x = e.clientX + 24;
     mouse.current.y = e.clientY + 24;
     moveX.current(mouse.current.x);
     moveY.current(mouse.current.y);
-  };
+  }, []);
 
   return (
     <section id="projects" className="flex flex-col min-h-screen">

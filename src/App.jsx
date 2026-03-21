@@ -20,15 +20,6 @@ const App = () => {
       const timer = setTimeout(() => setIsReady(true), 500);
       return () => clearTimeout(timer);
     }
-    
-    // Fallback: if stuck for too long, just show the app
-    const fallbackTimer = setTimeout(() => {
-      if (progress > 30) { // If some progress made, maybe it's just slow assets
-        setIsReady(true);
-      }
-    }, 10000); // 10 second timeout
-
-    return () => clearTimeout(fallbackTimer);
   }, [progress]);
 
   return (
