@@ -14,9 +14,6 @@ const Contact = () => {
     "just imagin, I code",
     "just imagin, I code",
     "just imagin, I code",
-    "just imagin, I code",
-    "just imagin, I code",
-    "just imagin, I code",
   ];
   useGSAP(() => {
     gsap.from(".social-link", {
@@ -82,9 +79,9 @@ const Contact = () => {
                       rel="noopener noreferrer"
                       className="group flex items-center gap-1.5 text-xs leading-loose tracking-widest uppercase md:text-sm text-white/50 hover:text-white transition-all duration-300"
                     >
-                      <Icon 
-                        icon={getIcon(social.name)} 
-                        className="size-4 md:size-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" 
+                      <Icon
+                        icon={getIcon(social.name)}
+                        className="size-4 md:size-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12"
                       />
                       <span className="relative">
                         {social.name}
