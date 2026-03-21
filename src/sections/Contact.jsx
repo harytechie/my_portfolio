@@ -14,6 +14,9 @@ const Contact = () => {
     "just imagin, I code",
     "just imagin, I code",
     "just imagin, I code",
+    "just imagin, I code",
+    "just imagin, I code",
+    "just imagin, I code",
   ];
   useGSAP(() => {
     gsap.from(".social-link", {

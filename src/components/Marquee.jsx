@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { Observer } from "gsap/all";
 import { useEffect, useRef } from "react";
 gsap.registerPlugin(Observer);
+
 const Marquee = ({
   items,
   className = "text-white bg-black",
@@ -31,7 +32,7 @@ const Marquee = ({
       curIndex = 0,
       pixelsPerSecond = (config.speed || 1) * 100,
       snap =
-        config.snap === false ? (v) => v : gsap.utils.snap(config.snap || 1), // some browsers shift by a pixel to accommodate flex layouts, so for example if width is 20% the first element's width might be 242px, and the next 243px, alternating back and forth. So we snap to 5 percentage points to make things look more natural
+        config.snap === false ? (v) => v : gsap.utils.snap(config.snap || 1),
       totalWidth,
       curX,
       distanceToStart,
@@ -39,7 +40,6 @@ const Marquee = ({
       item,
       i;
     gsap.set(items, {
-      // convert "x" to "xPercent" to make things responsive, and populate the widths/xPercents Arrays to make lookups faster.
       xPercent: (i, el) => {
         let w = (widths[i] = parseFloat(gsap.getProperty(el, "width", "px")));
         xPercents[i] = snap(
@@ -92,11 +92,10 @@ const Marquee = ({
     function toIndex(index, vars) {
       vars = vars || {};
       Math.abs(index - curIndex) > length / 2 &&
-        (index += index > curIndex ? -length : length); // always go in the shortest direction
+        (index += index > curIndex ? -length : length);
       let newIndex = gsap.utils.wrap(0, length, index),
         time = times[newIndex];
       if (time > tl.time() !== index > curIndex) {
-        // if we're wrapping the timeline's playhead, make the proper adjustments
         vars.modifiers = { time: gsap.utils.wrap(0, tl.duration()) };
         time += tl.duration() * (index > curIndex ? 1 : -1);
       }
@@ -109,7 +108,7 @@ const Marquee = ({
     tl.current = () => curIndex;
     tl.toIndex = (index, vars) => toIndex(index, vars);
     tl.times = times;
-    tl.progress(1, true).progress(0, true); // pre-render for performance
+    tl.progress(1, true).progress(0, true);
     if (config.reversed) {
       tl.vars.onReverseComplete();
       tl.reverse();
@@ -123,6 +122,7 @@ const Marquee = ({
 
     const tl = horizontalLoop(elements, {
       repeat: -1,
+      speed: 1.2,
       paddingRight: 30,
       reversed: reverse,
     });
@@ -146,22 +146,21 @@ const Marquee = ({
       obs.kill();
     };
   }, [items, reverse]);
+
   return (
     <div
       ref={containerRef}
       className={`overflow-hidden w-full h-20 md:h-[100px] flex items-center marquee-text-responsive font-light uppercase whitespace-nowrap ${className}`}
     >
-      <div className="flex">
-        {items.map((text, index) => (
-          <span
-            key={index}
-            ref={(el) => (itemsRef.current[index] = el)}
-            className="flex items-center px-16 gap-x-32"
-          >
-            {text} <Icon icon={icon} className={iconClassName} />
-          </span>
-        ))}
-      </div>
+      {items.map((text, index) => (
+        <span
+          key={index}
+          ref={(el) => (itemsRef.current[index] = el)}
+          className="inline-flex items-center gap-x-8 px-16 flex-shrink-0"
+        >
+          {text}&nbsp;<Icon icon={icon} className={`inline-block ${iconClassName}`} />
+        </span>
+      ))}
     </div>
   );
 };
